@@ -8,7 +8,10 @@ public abstract class InputMethod {
     return 0;
   }
 
-  public double rightSidePower() {
+  public double rightSidePower() {  
     return 0;
+    
   }
+  public boolean INTAKE();
+  	return false;
 }

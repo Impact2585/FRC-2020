@@ -30,4 +30,8 @@ public class XBoxInput extends InputMethod {
       return 0;
     return forward;
   }
+  @Override
+  public boolean INTAKE() {
+    return controller.getAButton();
+  }
 }
