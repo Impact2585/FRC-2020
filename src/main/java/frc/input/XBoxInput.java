@@ -30,4 +30,14 @@ public class XBoxInput extends InputMethod {
       return 0;
     return forward;
   }
+
+  @Override
+  public boolean shouldIntake(){
+    return controller.getBumper(Hand.kLeft) || controller.getBumper(Hand.kRight);
+  }
+
+  @Override
+  public boolean shouldSpinWheel(){
+    return controller.getYButton();
+  }
 }

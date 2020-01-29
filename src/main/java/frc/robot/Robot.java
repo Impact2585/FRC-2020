@@ -15,6 +15,8 @@ public class Robot extends TimedRobot {
 
   private XBoxInput input;
   private WheelSystem wheels;
+  private IntakeSystem intake;
+  private WheelSpinnerSystem wheelSpinner;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -29,6 +31,10 @@ public class Robot extends TimedRobot {
     input = new XBoxInput();
     wheels = new WheelSystem(input);
     wheels.init();
+    intake = new IntakeSystem(input);
+    intake.init();
+    wheelSpinner = new WheelSpinnerSystem(input);
+    wheelSpinner.init();
   }
 
   /**
@@ -84,6 +90,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     wheels.run();
+    intake.run();
+    wheelSpinner.run();
   }
 
   /**
@@ -92,5 +100,7 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
     wheels.run();
+    intake.run();
+    wheelSpinner.run();
   }
 }

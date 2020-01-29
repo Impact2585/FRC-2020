@@ -11,4 +11,12 @@ public abstract class InputMethod {
   public double rightSidePower() {
     return 0;
   }
+
+  public boolean shouldIntake(){
+    return false;
+  }
+
+  public boolean shouldSpinWheel(){
+    return false;
+  }
 }
