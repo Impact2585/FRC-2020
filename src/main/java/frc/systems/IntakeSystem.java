@@ -23,7 +23,7 @@ public class IntakeSystem extends RobotSystem {
 
   @Override
   public void init() {
-    Spark intake_motor = new Spark(RobotMap.INTAKE_MOTOR);
+    intake_motor = new Spark(RobotMap.INTAKE_MOTOR);
   }
 
   @Override

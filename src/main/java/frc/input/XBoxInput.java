@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 public class XBoxInput extends InputMethod {
   private XboxController controller;
   private final double JOYSTICK_DEAD_ZONE = 0.075;
+  private boolean shouldShoot;
 
   public XBoxInput() {
     // the joystick is registered as port #0
     controller = new XboxController(0);
+    shouldShoot = false;
   }
 
   @Override
@@ -39,5 +41,16 @@ public class XBoxInput extends InputMethod {
   @Override
   public boolean shouldSpinWheel(){
     return controller.getYButton();
+  }
+
+  @Override
+  public boolean shouldShoot(){
+    if(controller.getAButton()){
+      shouldShoot = true;
+    }
+    if(controller.getBButton()){
+      shouldShoot = false;
+    }
+    return shouldShoot;
   }
 }

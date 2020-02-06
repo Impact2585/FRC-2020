@@ -19,4 +19,8 @@ public abstract class InputMethod {
   public boolean shouldSpinWheel(){
     return false;
   }
+
+  public boolean shouldShoot(){
+    return false;
+  }
 }

@@ -23,7 +23,7 @@ public class WheelSpinnerSystem extends RobotSystem {
 
   @Override
   public void init() {
-    Spark spinner_motor = new Spark(RobotMap.SPIN_MOTOR);
+    spinner_motor = new Spark(RobotMap.SPIN_MOTOR);
   }
 
   @Override

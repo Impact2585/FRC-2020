@@ -17,6 +17,7 @@ public class Robot extends TimedRobot {
   private WheelSystem wheels;
   private IntakeSystem intake;
   private WheelSpinnerSystem wheelSpinner;
+  private FlywheelSystem flywheel;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -35,6 +36,8 @@ public class Robot extends TimedRobot {
     intake.init();
     wheelSpinner = new WheelSpinnerSystem(input);
     wheelSpinner.init();
+    flywheel = new FlywheelSystem(input);
+    flywheel.init();
   }
 
   /**
@@ -92,6 +95,7 @@ public class Robot extends TimedRobot {
     wheels.run();
     intake.run();
     wheelSpinner.run();
+    flywheel.run();
   }
 
   /**
@@ -102,5 +106,6 @@ public class Robot extends TimedRobot {
     wheels.run();
     intake.run();
     wheelSpinner.run();
+    flywheel.run();
   }
 }
