@@ -29,7 +29,7 @@ public class IndexerSystem extends RobotSystem
     @Override
     public void run() 
     {
-        index_motor.setSpeed((input.shouldShoot()) ? SHOOTER_SPEED : 0);
+        index_motor.setSpeed((input.shouldShoot()) ? INDEX_SPEED : 0);
     }
 
 }
