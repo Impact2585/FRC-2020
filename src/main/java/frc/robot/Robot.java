@@ -1,4 +1,4 @@
-package src.main.java.frc.robot;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -16,6 +16,9 @@ public class Robot extends TimedRobot {
   private XBoxInput input;
   private WheelSystem wheels;
   private IntakeSystem intake;
+  private WheelSpinnerSystem wheelSpinner;
+  private FlywheelSystem flywheel;
+  private IndexerSystem indexer;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -30,9 +33,14 @@ public class Robot extends TimedRobot {
     input = new XBoxInput();
     wheels = new WheelSystem(input);
     wheels.init();
-    
     intake = new IntakeSystem(input);
     intake.init();
+    wheelSpinner = new WheelSpinnerSystem(input);
+    wheelSpinner.init();
+    flywheel = new FlywheelSystem(input);
+    flywheel.init();
+    indexer = new IndexerSystem(input);
+    indexer.init();
   }
 
   /**
@@ -89,6 +97,8 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     wheels.run();
     intake.run();
+    wheelSpinner.run();
+    flywheel.run();
   }
 
   /**
@@ -98,5 +108,7 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     wheels.run();
     intake.run();
+    wheelSpinner.run();
+    flywheel.run();
   }
 }
