@@ -1,4 +1,4 @@
-package src.main.java.frc.input;
+package frc.input;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -7,32 +7,55 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
  * The input from the XBox remote
  */
 public class XBoxInput extends InputMethod {
-    private XboxController controller;
-    private final double JOYSTICK_DEAD_ZONE = 0.075;
+  private XboxController controller;
+  private final double JOYSTICK_DEAD_ZONE = 0.075;
+  private boolean shouldShoot;
 
-    public XBoxInput() {
-        // the joystick is registered as port #0
-        controller = new XboxController(0);
-    } 
+  public XBoxInput() {
+    // the joystick is registered as port #0
+    controller = new XboxController(0);
+    shouldShoot = false;
+  }
 
-    @Override
-    public double leftSidePower() {
-        double forward = controller.getY(Hand.kLeft);
-        if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
-            return 0;
-        return forward;
-    }
+  @Override
+  public double leftSidePower() {
+    double forward = controller.getY(Hand.kLeft);
+    if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
+      return 0;
+    return forward;
+  }
 
-    @Override
-    public double rightSidePower() {
-        double forward = controller.getY(Hand.kRight);
-        if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
-            return 0;
-        return forward;
+  @Override
+  public double rightSidePower() {
+    double forward = controller.getY(Hand.kRight);
+    if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
+      return 0;
+    return forward;
+  }
+
+  @Override
+  public boolean shouldIntake(){
+    return controller.getBumper(Hand.kLeft) || controller.getBumper(Hand.kRight);
+  }
+
+  @Override
+  public boolean shouldSpinWheel(){
+    return controller.getYButton();
+  }
+
+  @Override
+  public boolean shouldIndex(){
+    return contoller.getXButton();
+  }
+
+  @Override
+  public boolean shouldShoot(){
+    if(controller.getAButton()){
+      shouldShoot = true;
     }
-  
-    @Override
-    public boolean intake() {
-        return controller.getAButton();
+    if(controller.getBButton()){
+      shouldShoot = false;
     }
+    return shouldShoot;
+  }
 }
