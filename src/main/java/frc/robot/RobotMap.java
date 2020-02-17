@@ -9,4 +9,5 @@ public class RobotMap {
   public static final int INTAKE_MOTOR = 2;
   public static final int SPIN_MOTOR = 3;
   public static final int SHOOTER_MOTOR = 4;
+  public static final int INDEXER_MOTOR = 5;
 }

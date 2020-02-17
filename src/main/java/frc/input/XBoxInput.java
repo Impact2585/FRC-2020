@@ -39,6 +39,11 @@ public class XBoxInput extends InputMethod {
   }
 
   @Override
+  public boolean shouldIndex(){
+    return controller.getXButton();
+  }
+
+  @Override
   public boolean shouldSpinWheel(){
     return controller.getYButton();
   }

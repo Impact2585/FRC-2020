@@ -23,4 +23,8 @@ public abstract class InputMethod {
   public boolean shouldShoot(){
     return false;
   }
+
+  public boolean shouldIndex(){
+    return false;
+  }
 }
