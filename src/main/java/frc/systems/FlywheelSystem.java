@@ -1,8 +1,12 @@
 package frc.systems;
 
-import edu.wpi.first.wpilibj.Spark;
 import frc.input.InputMethod;
 import frc.robot.RobotMap;
+
+import com.revrobotics.CANError;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 /**
  * Controls the flywheel system of the robot
@@ -10,7 +14,8 @@ import frc.robot.RobotMap;
 public class FlywheelSystem extends RobotSystem {
   private final double SHOOTER_SPEED = 0.8;
 
-  private Spark shooter_motor;
+  private CANSparkMax shooter_motor1;
+  private CANSparkMax shooter_motor2;
 
   /**
    * Creates a new flywheel system
@@ -23,11 +28,30 @@ public class FlywheelSystem extends RobotSystem {
 
   @Override
   public void init() {
-    shooter_motor = new Spark(RobotMap.SHOOTER_MOTOR);
+    shooter_motor1 = new CANSparkMax(RobotMap.SHOOTER_MOTOR_1_CAN_ID, MotorType.kBrushless);
+    shooter_motor2 = new CANSparkMax(RobotMap.SHOOTER_MOTOR_2_CAN_ID, MotorType.kBrushless);
+
+    shooter_motor1.restoreFactoryDefaults();
+    shooter_motor2.restoreFactoryDefaults();
+
+    shooter_motor1.setIdleMode(IdleMode.kCoast);
+    shooter_motor2.setIdleMode(IdleMode.kCoast);
+
+    shooter_motor1.setOpenLoopRampRate(5);
+    shooter_motor2.setOpenLoopRampRate(5);
+
+    shooter_motor1.setInverted(false);
+    shooter_motor2.setInverted(true);
   }
 
   @Override
   public void run() {
-    shooter_motor.setSpeed((input.shouldShoot()) ? SHOOTER_SPEED : 0);
+    if(input.shouldShoot()){
+      shooter_motor1.set(SHOOTER_SPEED);
+      shooter_motor2.set(SHOOTER_SPEED);
+    } else {
+      shooter_motor1.set(0);
+      shooter_motor2.set(0);
+    }
   }
 }
