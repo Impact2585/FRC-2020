@@ -12,19 +12,19 @@ public abstract class InputMethod {
     return 0;
   }
 
-  public boolean shouldIntake(){
-    return false;
+  public int shouldIntake(){
+    return 0;
   }
 
-  public boolean shouldSpinWheel(){
-    return false;
+  public int shouldSpinConveyer(){
+    return 0;
   }
 
   public boolean shouldShoot(){
     return false;
   }
 
-  public boolean shouldIndex(){
-    return false;
+  public int shouldIndex(){
+    return 0;
   }
 }

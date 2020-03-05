@@ -12,7 +12,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
  * Controls the flywheel system of the robot
  */
 public class FlywheelSystem extends RobotSystem {
-  private final double SHOOTER_SPEED = 0.8;
+  private final double SHOOTER_SPEED = 1;
 
   private CANSparkMax shooter_motor1;
   private CANSparkMax shooter_motor2;
@@ -31,17 +31,14 @@ public class FlywheelSystem extends RobotSystem {
     shooter_motor1 = new CANSparkMax(RobotMap.SHOOTER_MOTOR_1_CAN_ID, MotorType.kBrushless);
     shooter_motor2 = new CANSparkMax(RobotMap.SHOOTER_MOTOR_2_CAN_ID, MotorType.kBrushless);
 
-    shooter_motor1.restoreFactoryDefaults();
-    shooter_motor2.restoreFactoryDefaults();
-
     shooter_motor1.setIdleMode(IdleMode.kCoast);
     shooter_motor2.setIdleMode(IdleMode.kCoast);
 
-    shooter_motor1.setOpenLoopRampRate(5);
-    shooter_motor2.setOpenLoopRampRate(5);
+    shooter_motor1.setOpenLoopRampRate(3);
+    shooter_motor2.setOpenLoopRampRate(3);
 
-    shooter_motor1.setInverted(false);
-    shooter_motor2.setInverted(true);
+    shooter_motor1.setInverted(true);
+    shooter_motor2.setInverted(false);
   }
 
   @Override

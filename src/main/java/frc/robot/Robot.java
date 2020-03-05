@@ -16,7 +16,7 @@ public class Robot extends TimedRobot {
   private XBoxInput input;
   private WheelSystem wheels;
   private IntakeSystem intake;
-  private WheelSpinnerSystem wheelSpinner;
+  private ConveyerSystem conveyer;
   private FlywheelSystem flywheel;
   private IndexerSystem indexer;
 
@@ -37,8 +37,8 @@ public class Robot extends TimedRobot {
     intake.init();
     indexer = new IndexerSystem(input);
     indexer.init();
-    wheelSpinner = new WheelSpinnerSystem(input);
-    wheelSpinner.init();
+    conveyer = new ConveyerSystem(input);
+    conveyer.init();
     flywheel = new FlywheelSystem(input);
     flywheel.init();
   }
@@ -97,7 +97,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     wheels.run();
     intake.run();
-    wheelSpinner.run();
+    conveyer.run();
     flywheel.run();
     indexer.run();
   }
@@ -109,7 +109,7 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     wheels.run();
     intake.run();
-    wheelSpinner.run();
+    conveyer.run();
     flywheel.run();
     indexer.run();
   }

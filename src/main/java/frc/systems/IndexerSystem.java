@@ -28,6 +28,6 @@ public class IndexerSystem extends RobotSystem {
 
   @Override
   public void run() {
-    indexer_motor.setSpeed((input.shouldIndex()) ? INDEX_SPEED : 0);
+    indexer_motor.setSpeed(input.shouldIndex() * INDEX_SPEED);
   }
 }

@@ -34,18 +34,24 @@ public class XBoxInput extends InputMethod {
   }
 
   @Override
-  public boolean shouldIntake(){
-    return controller.getBumper(Hand.kLeft) || controller.getBumper(Hand.kRight);
+  public int shouldIntake(){
+    if(controller.getBumper(Hand.kLeft))
+      return -1;
+    return (controller.getTriggerAxis(Hand.kLeft) > 0.75 || controller.getTriggerAxis(Hand.kRight) > 0.75) ? 1 : 0;
   }
 
   @Override
-  public boolean shouldIndex(){
-    return controller.getXButton();
+  public int shouldIndex(){
+    if(controller.getBumper(Hand.kRight))
+      return -1;
+    return (controller.getXButton()) ? 1 : 0;
   }
 
   @Override
-  public boolean shouldSpinWheel(){
-    return controller.getYButton();
+  public int shouldSpinConveyer(){
+    if(controller.getBumper(Hand.kRight))
+      return -1;
+    return (controller.getYButton()) ? 1 : 0;
   }
 
   @Override
