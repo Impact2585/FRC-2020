@@ -12,11 +12,11 @@ public abstract class InputMethod {
     return 0;
   }
 
-  public int shouldIntake(){
+  public double shouldIntake(){
     return 0;
   }
 
-  public int shouldSpinConveyer(){
+  public double shouldSpinConveyer(){
     return 0;
   }
 
@@ -24,7 +24,7 @@ public abstract class InputMethod {
     return false;
   }
 
-  public int shouldIndex(){
+  public double shouldIndex(){
     return 0;
   }
 }

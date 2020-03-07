@@ -19,14 +19,6 @@ public class XBoxInput extends InputMethod {
 
   @Override
   public double leftSidePower() {
-    double forward = controller.getY(Hand.kLeft);
-    if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
-      return 0;
-    return forward;
-  }
-
-  @Override
-  public double rightSidePower() {
     double forward = controller.getY(Hand.kRight);
     if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
       return 0;
@@ -34,32 +26,46 @@ public class XBoxInput extends InputMethod {
   }
 
   @Override
-  public int shouldIntake(){
+  public double rightSidePower() {
+    double forward = controller.getY(Hand.kLeft);
+    if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
+      return 0;
+    return forward;
+  }
+
+  @Override
+  public double shouldIntake(){
+    if(controller.getBumper(Hand.kLeft) || controller.getTriggerAxis(Hand.kLeft) > 0.75)
+      return 1;
+    return 0;
+  }
+
+  @Override
+  public double shouldIndex(){
     if(controller.getBumper(Hand.kLeft))
-      return -1;
-    return (controller.getTriggerAxis(Hand.kLeft) > 0.75 || controller.getTriggerAxis(Hand.kRight) > 0.75) ? 1 : 0;
+      return 1;
+    if(controller.getBumper(Hand.kRight))
+      return -0.5;
+    return 0;
   }
 
   @Override
-  public int shouldIndex(){
+  public double shouldSpinConveyer(){
+    if(controller.getBumper(Hand.kLeft))
+      return 1;
+    if(controller.getTriggerAxis(Hand.kLeft) > 0.75)
+      return 0.2;
     if(controller.getBumper(Hand.kRight))
-      return -1;
-    return (controller.getXButton()) ? 1 : 0;
-  }
-
-  @Override
-  public int shouldSpinConveyer(){
-    if(controller.getBumper(Hand.kRight))
-      return -1;
-    return (controller.getYButton()) ? 1 : 0;
+      return -0.5;
+    return 0;
   }
 
   @Override
   public boolean shouldShoot(){
-    if(controller.getAButton()){
+    if(controller.getBumper(Hand.kRight)){
       shouldShoot = true;
     }
-    if(controller.getBButton()){
+    if(controller.getTriggerAxis(Hand.kRight) > 0.75){
       shouldShoot = false;
     }
     return shouldShoot;
