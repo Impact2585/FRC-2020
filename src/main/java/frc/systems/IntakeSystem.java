@@ -28,6 +28,10 @@ public class IntakeSystem extends RobotSystem {
 
   @Override
   public void run() {
-    intake_motor.setSpeed(input.shouldIntake() * INTAKE_SPEED);
+    setSpeed(input.shouldIntake());
+  }
+
+  public void setSpeed(double speed){
+    intake_motor.setSpeed(speed * INTAKE_SPEED);
   }
 }

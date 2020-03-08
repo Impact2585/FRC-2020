@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -19,6 +20,8 @@ public class Robot extends TimedRobot {
   private ConveyerSystem conveyer;
   private FlywheelSystem flywheel;
   private IndexerSystem indexer;
+
+  private Timer autonTimer;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -71,6 +74,8 @@ public class Robot extends TimedRobot {
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
+    autonTimer = new Timer();
+    autonTimer.start();
   }
 
   /**
@@ -78,8 +83,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    
     // TO-DO
-    switch (m_autoSelected) {
+    /*switch (m_autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
         break;
@@ -87,7 +93,8 @@ public class Robot extends TimedRobot {
       default:
         // Put default auto code here
         break;
-    }
+    }*/
+
   }
 
   /**

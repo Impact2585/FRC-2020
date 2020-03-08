@@ -44,11 +44,14 @@ public class FlywheelSystem extends RobotSystem {
   @Override
   public void run() {
     if(input.shouldShoot()){
-      shooter_motor1.set(SHOOTER_SPEED);
-      shooter_motor2.set(SHOOTER_SPEED);
+      setSpeed(SHOOTER_SPEED);
     } else {
-      shooter_motor1.set(0);
-      shooter_motor2.set(0);
+      setSpeed(0);
     }
+  }
+
+  public void setSpeed(double speed){
+    shooter_motor1.set(speed);
+    shooter_motor2.set(speed);
   }
 }

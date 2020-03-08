@@ -28,6 +28,10 @@ public class ConveyerSystem extends RobotSystem {
 
   @Override
   public void run() {
-    conveyer_motor.setSpeed(SPIN_SPEED * input.shouldSpinConveyer());
+    setSpeed(input.shouldSpinConveyer());
+  }
+
+  public void setSpeed(double speed){
+    conveyer_motor.setSpeed(SPIN_SPEED * speed);
   }
 }

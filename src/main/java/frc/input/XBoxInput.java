@@ -19,7 +19,7 @@ public class XBoxInput extends InputMethod {
 
   @Override
   public double leftSidePower() {
-    double forward = controller.getY(Hand.kRight);
+    double forward = controller.getY(Hand.kLeft);
     if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
       return 0;
     return forward;
@@ -27,7 +27,7 @@ public class XBoxInput extends InputMethod {
 
   @Override
   public double rightSidePower() {
-    double forward = controller.getY(Hand.kLeft);
+    double forward = controller.getY(Hand.kRight);
     if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
       return 0;
     return forward;

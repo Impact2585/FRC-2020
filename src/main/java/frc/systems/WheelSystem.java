@@ -28,13 +28,16 @@ public class WheelSystem extends RobotSystem {
   public void init() {
     Spark leftMotor = new Spark(RobotMap.LEFT_DRIVE_MOTOR);
     Spark rightMotor = new Spark(RobotMap.RIGHT_DRIVE_MOTOR);
-    wheels = new DifferentialDrive(leftMotor, rightMotor);
+    wheels = new DifferentialDrive(rightMotor, leftMotor);
   }
 
   @Override
   public void run() {
-    double[] power = new double[]{input.leftSidePower() * DRIVE_AMT, input.rightSidePower() * DRIVE_AMT};
-    wheels.tankDrive(power[0], power[1], true);
+      drive(input.leftSidePower(), input.rightSidePower());
+  }
+
+  public void drive(double leftPower, double rightPower){
+      wheels.tankDrive(leftPower * DRIVE_AMT, rightPower * DRIVE_AMT, true);
   }
   
   public double[] pointToTape(){
