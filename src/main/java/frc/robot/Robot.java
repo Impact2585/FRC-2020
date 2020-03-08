@@ -71,20 +71,42 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
+    /*m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
+    System.out.println("Auto selected: " + m_autoSelected);*/
     autonTimer = new Timer();
     autonTimer.start();
   }
 
   /**
    * This function is called periodically during autonomous.
+   * TO-DO: Tune motor speeds and time values.
    */
   @Override
   public void autonomousPeriodic() {
-    
-    // TO-DO
+    if(autonTimer.get() < 4){
+      flywheel.setSpeed(0.75);
+      // Wait for shooter to spin up
+    } else if (autonTimer.get() < 8){
+      // Run rollers to shoot
+      intake.setSpeed(1);
+      conveyer.setSpeed(1);
+      indexer.setSpeed(1);
+    } else if (autonTimer.get() < 8.5){
+      // Stop rollers
+      intake.setSpeed(0);
+      conveyer.setSpeed(0);
+      indexer.setSpeed(0);
+      flywheel.setSpeed(0);
+    } else if (autonTimer.get() < 12){
+      // Drive backward to cross initiation line
+      wheels.drive(-0.5, -0.5);
+    } else {
+      // Stop
+      wheels.drive(0, 0);
+    }
+
+    // TO-DO : different autons for different positions
     /*switch (m_autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
