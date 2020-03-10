@@ -10,7 +10,9 @@ import frc.robot.RobotMap;
 public class ConveyerSystem extends RobotSystem {
   private final double SPIN_SPEED = 1;
 
-  private Spark conveyer_motor;
+  private Spark conveyer_motor1;
+  private Spark conveyer_motor2;
+
 
   /**
    * Creates a new conveyer system
@@ -23,7 +25,8 @@ public class ConveyerSystem extends RobotSystem {
 
   @Override
   public void init() {
-    conveyer_motor = new Spark(RobotMap.CONVEYER_MOTORS);
+    conveyer_motor1 = new Spark(RobotMap.CONVEYER_MOTOR1);
+    conveyer_motor2 = new Spark(RobotMap.CONVEYER_MOTOR2);
   }
 
   @Override
@@ -32,6 +35,7 @@ public class ConveyerSystem extends RobotSystem {
   }
 
   public void setSpeed(double speed){
-    conveyer_motor.setSpeed(SPIN_SPEED * speed);
+    conveyer_motor1.setSpeed(SPIN_SPEED * speed);
+     conveyer_motor2.setSpeed(SPIN_SPEED * speed);
   }
 }

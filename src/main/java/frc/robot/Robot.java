@@ -20,6 +20,7 @@ public class Robot extends TimedRobot {
   private ConveyerSystem conveyer;
   private FlywheelSystem flywheel;
   private IndexerSystem indexer;
+  private ClimbSystem climb;
 
   private Timer autonTimer;
 
@@ -44,6 +45,8 @@ public class Robot extends TimedRobot {
     conveyer.init();
     flywheel = new FlywheelSystem(input);
     flywheel.init();
+    climb = new ClimbSystem(input);
+    climb.init();
   }
 
   /**
@@ -129,6 +132,7 @@ public class Robot extends TimedRobot {
     conveyer.run();
     flywheel.run();
     indexer.run();
+    climb.run();
   }
 
   /**
@@ -141,5 +145,6 @@ public class Robot extends TimedRobot {
     conveyer.run();
     flywheel.run();
     indexer.run();
+    climb.run();
   }
 }

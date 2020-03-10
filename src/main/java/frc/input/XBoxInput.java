@@ -54,7 +54,7 @@ public class XBoxInput extends InputMethod {
     if(controller.getBumper(Hand.kLeft))
       return 1;
     if(controller.getTriggerAxis(Hand.kLeft) > 0.75)
-      return 0.2;
+      return 0.6;
     if(controller.getBumper(Hand.kRight))
       return -0.5;
     return 0;
@@ -69,5 +69,25 @@ public class XBoxInput extends InputMethod {
       shouldShoot = false;
     }
     return shouldShoot;
+  }
+
+  @Override
+  public double shouldWinch(){
+    if(controller.getYButton()){
+      return 1;
+    } else if (controller.getAButton()){
+      return -1;
+    }
+    return 0;
+  }
+
+  @Override
+  public double shouldAdjust(){
+    if(controller.getXButton()){
+      return 1;
+    } else if (controller.getBButton()){
+      return -1;
+    }
+    return 0;
   }
 }

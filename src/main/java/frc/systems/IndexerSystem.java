@@ -1,6 +1,6 @@
 package frc.systems;
 
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Talon;
 import frc.input.InputMethod;
 import frc.robot.RobotMap;
 
@@ -8,9 +8,9 @@ import frc.robot.RobotMap;
  * Controls the indexer system of the robot
  */
 public class IndexerSystem extends RobotSystem {
-  private final double INDEX_SPEED = 0.;
+  private final double INDEX_SPEED = 0.8;
 
-  private Spark indexer_motor;
+  private Talon indexer_motor;
 
   /**
    * Creates a new indexer system
@@ -23,7 +23,7 @@ public class IndexerSystem extends RobotSystem {
 
   @Override
   public void init() {
-    indexer_motor = new Spark(RobotMap.INDEXER_MOTOR);
+    indexer_motor = new Talon(RobotMap.INDEXER_MOTOR);
   }
 
   @Override

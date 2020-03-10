@@ -27,4 +27,12 @@ public abstract class InputMethod {
   public double shouldIndex(){
     return 0;
   }
+
+  public double shouldWinch(){
+    return 0;
+  }
+
+  public double shouldAdjust(){
+    return 0;
+  }
 }
