@@ -19,6 +19,6 @@ public class RobotMap {
   public static final int ADJUST_MOTOR = 7;
 
   // Shooter motors (CAN)
-  public static final int SHOOTER_MOTOR_1_CAN_ID = 2;
+  public static final int SHOOTER_MOTOR_1_CAN_ID = 0;
   public static final int SHOOTER_MOTOR_2_CAN_ID = 1;
 }
