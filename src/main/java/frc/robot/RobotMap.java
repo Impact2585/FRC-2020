@@ -16,7 +16,7 @@ public class RobotMap {
 
   // Climb motors
   public static final int WINCH_MOTOR = 6;
-  public static final int ADJUST_MOTOR = 7;
+  public static final int ADJUST_MOTOR = 8;
 
   // Shooter motors (CAN)
   public static final int SHOOTER_MOTOR_1_CAN_ID = 0;
