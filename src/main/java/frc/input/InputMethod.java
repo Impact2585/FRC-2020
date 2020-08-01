@@ -11,4 +11,28 @@ public abstract class InputMethod {
   public double rightSidePower() {
     return 0;
   }
+
+  public double shouldIntake(){
+    return 0;
+  }
+
+  public double shouldSpinConveyer(){
+    return 0;
+  }
+
+  public boolean shouldShoot(){
+    return false;
+  }
+
+  public double shouldIndex(){
+    return 0;
+  }
+
+  public double shouldWinch(){
+    return 0;
+  }
+
+  public double shouldAdjust(){
+    return 0;
+  }
 }

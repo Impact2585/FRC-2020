@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 public class XBoxInput extends InputMethod {
   private XboxController controller;
   private final double JOYSTICK_DEAD_ZONE = 0.075;
+  private boolean shouldShoot;
 
   public XBoxInput() {
     // the joystick is registered as port #0
     controller = new XboxController(0);
+    shouldShoot = false;
   }
 
   @Override
@@ -29,5 +31,63 @@ public class XBoxInput extends InputMethod {
     if(Math.abs(forward) < JOYSTICK_DEAD_ZONE)
       return 0;
     return forward;
+  }
+
+  @Override
+  public double shouldIntake(){
+    if(controller.getBumper(Hand.kLeft) || controller.getTriggerAxis(Hand.kLeft) > 0.75)
+      return 1;
+    return 0;
+  }
+
+  @Override
+  public double shouldIndex(){
+    if(controller.getBumper(Hand.kLeft))
+      return 1;
+    if(controller.getBumper(Hand.kRight))
+      return -0.5;
+    return 0;
+  }
+
+  @Override
+  public double shouldSpinConveyer(){
+    if(controller.getBumper(Hand.kLeft))
+      return 1;
+    if(controller.getTriggerAxis(Hand.kLeft) > 0.75)
+      return 0.6;
+    if(controller.getBumper(Hand.kRight))
+      return -0.5;
+    return 0;
+  }
+
+  @Override
+  public boolean shouldShoot(){
+    if(controller.getBumper(Hand.kRight)){
+      shouldShoot = true;
+    }
+    if(controller.getTriggerAxis(Hand.kRight) > 0.75){
+      shouldShoot = false;
+    }
+    return shouldShoot;
+  }
+
+  @Override
+  public double shouldWinch(){
+    if(controller.getYButton()){
+      return 1;
+    } else if (controller.getAButton()){
+      return -1;
+    }
+    return 0;
+  }
+
+  @Override
+  public double shouldAdjust(){
+    if(controller.getXButton()){
+      return 1;
+    } else if (controller.getBButton()){
+      return -1;
+    }
+    return 0;
   }
 }
